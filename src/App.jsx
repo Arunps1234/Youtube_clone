@@ -9,7 +9,6 @@ const App = () => {
 
   const [collapsesidebar, setCollapse] = useState(false)
 
-  console.log(collapsesidebar)
 
   return (
     <div>

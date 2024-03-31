@@ -26,9 +26,9 @@ const Navbar = ({setCollapse, collapsesidebar}) => {
             </div> 
 
             <div className='nav-right flex-div'>
-                <img src={upload_icon} alt="Upload_icon" />
-                <img src={more_icon} alt="more_icon" />
-                <img src={notification_icon} alt="Notification_icon" />
+                <img src={upload_icon} alt="Upload_icon" className='upload_icon'/>
+                <img src={more_icon} alt="more_icon" className='more_icon' />
+                <img src={notification_icon} alt="Notification_icon" className='notification_icon'/>
                 <img src={profile_icon} alt="Profile_icon" className='user_icon'/>
             </div>
 

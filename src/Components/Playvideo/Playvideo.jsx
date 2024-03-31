@@ -16,7 +16,7 @@ const Playvideo = ({ videoId, categoryId }) => {
 
 
 
-    const API_KEY = "AIzaSyAdwtOctgrOisXXcBkDTdTNGCezy75kZo0"
+    const API_KEY = "AIzaSyB0dIFk2K31X-dog_oyhMzG1n18mR_3TYg"
 
     const [data, setData] = useState(null)
     const [desciption, setDescription] = useState(250)
@@ -30,15 +30,13 @@ const Playvideo = ({ videoId, categoryId }) => {
     const newURl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
     const getVideoDetails = async () => {
         const getData = await axios.get(newURl);
-        console.log(getData)
         setData(getData.data.items[0])
     }
 
     useEffect(() => {
         getVideoDetails();
 
-    }, [])
-    console.log(data)
+    })
 
     const converviewData = (viewcount) => {
         if (viewcount >= 1000000) {
@@ -57,13 +55,9 @@ const Playvideo = ({ videoId, categoryId }) => {
         }
     }
 
-    console.log(converviewData(1000))
 
 
-    function videoescription(data) {
-        console.log(data)
-        reurn
-    }
+    
 
     // ChannelDescUrl =
 
@@ -73,7 +67,6 @@ const Playvideo = ({ videoId, categoryId }) => {
         var URL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2C%20contentDetails%2C%20statistics&id=${data.snippet.channelId}&key=${API_KEY}`
 
         const fetchDatas = await axios.get(URL);
-        console.log(fetchDatas)
         setChannelData(fetchDatas.data.items[0])
         console.log(channeldata)
 
@@ -81,40 +74,42 @@ const Playvideo = ({ videoId, categoryId }) => {
 
     }
 
-    useEffect(() => {
+    
         fetChOtherData()
 
-    }, [data])
-    console.log(channeldata)
+    
+
+
+
 
     // fetch_comments data
+{/*
+const [comments, setComments] = useState([]);
 
-    const [commentdata, setCommentData] = useState([])
+function fetchComments () {
+   axios.get(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2C%20replies&videoId=${videoId}&key=${API_KEY}`).then(res=>{
+    console.log(res)
 
-    function fetchCommentsdata() {
-        axios.get(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2C%20replies&videoId=${videoId}&key=${API_KEY}`).then(res => {
-            setChannelData(res.data.items)
+   }).catch(err=>{
+    console.log(err)
+   })
+//setComments(commentsData.data.items)
+}
 
-        }).catch(err => {
-            console.log(err)
-        })
-    }
+fetchComments();
 
-    fetchCommentsdata()
-
-    console.log(`Commnetdata : ${commentdata}`)
-
+*/}
 
 
     return (
         <div className='play-video'>
             {/*  <video src={video1} controls autoPlay muted /> */}
-            <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
             <h3>{data ? data.snippet.title : "Title"}</h3>
 
             <div className='play-video-info'>
-                <p>{data ? converviewData(data.statistics.viewCount) : ""}  Views &bull; {data ? moment(data.snippet.publishedAt).fromNow() : ""}</p>
-                <div>
+                <p>{data ? converviewData(data.statistics.viewCount) : ""}  Views  &bull; {data ? moment(data.snippet.publishedAt).fromNow() : ""}</p>
+                <div className='icons'>
                     <span>  <img src={like} /> {data ? converviewData(data.statistics.likeCount) : ""} </span>
                     <span>  <img src={dislike} /> </span>
                     <span>  <img src={share} /> Share </span>
@@ -126,54 +121,54 @@ const Playvideo = ({ videoId, categoryId }) => {
             <hr />
 
             <div className='publisher'>
-                <img alt="Channel image" />
+                <img src ={channeldata.snippet.thumbnails.default.url} alt="Channel image" />
                 <div>
-                    <p>{data ? data.snippet.channelTitle : ""}</p>
+                    <p className='channelName'>{data ? data.snippet.channelTitle : ""}</p>
                     <span>Subscriber</span>
                 </div>
 
-                <button>Subscribe</button>
+                <button className='subscribebtn'>Subscribe</button>
             </div>
 
             <div className='video-descroption'>
-                <p>{data ? data.snippet.description.slice(0, desciption) : ""} <button onClick={() => setDescription(data.snippet.description.length)}>See More...</button></p>
+                <p>{data ? data.snippet.description.slice(0, 250) : ""}</p>
                 <hr />
 
 
                 <h4>{data ? converviewData(data.statistics.commentCount) : ""} Comments</h4>
 
               
-                <div className='comment' >
+            <div className='comment' >
 
 
 
 
-                <div>
-                    <img src={user_profile} alt="User_Profile" className='user_image' />
-                </div>
-
-                <div>
-                    <div>
-                        <h3>Aruna P S <span> 1 day ago</span></h3>
-                    </div>
-
-                    <div>
-                        <p> A global computer network providing a variety of information</p>
-
-                    </div>
-
-                    <div className='comment-action'>
-
-                        <img src={like} alt="like" /> <span>244</span>
-                        <img src={dislike} alt="dislike" /> <span>244</span>
-
-                    </div>
-
-                </div>
+            <div>
+                <img src= {   user_profile} alt="User_Profile" className='user_image' />
             </div>
 
+            <div>
+                <div>
+                    <h3>Aruna P S<span> 1 day ago</span></h3>
+                </div>
+
+                <div>
+                    <p> A global computer network providing a variety of information</p>
+
+                </div>
+
+                <div className='comment-action'>
+
+                    <img src={like} alt="like" /> <span>244</span>
+                    <img src={dislike} alt="dislike" /> <span>244</span>
+
+                </div>
+
+            </div>
+        </div>
 
 
+           
 
 
 

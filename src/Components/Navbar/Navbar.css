@@ -25,7 +25,7 @@ nav {
     border-radius: 25px;
 }
 
-.nav-middle .search-box input {
+nav .nav-middle .search-box input {
     width : 400px;
     outline: 0; 
     border : none;
@@ -47,3 +47,47 @@ nav {
     border-radius: 50%;
 
 }
+
+
+
+@media only screen and (max-width:768px){
+
+    
+.flex-div .menu_icon {
+    display: none;
+}
+
+.nav-left .logo{
+    width: 70px;
+}
+
+.nav-middle .search-box input {
+    display: none;
+}
+.nav-middle .search-box img {
+    display: none;
+}
+
+.upload_icon{
+    display: none;
+}
+.more_icon{
+    display: none;
+}
+.notification_icon{
+    display: none;
+}
+.user_icon{
+    display: none;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-middle .search-box {
+    display: none;
+}
+}
+

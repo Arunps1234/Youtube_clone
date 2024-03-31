@@ -1,5 +1,5 @@
 .play-video{
-    flex-basis: 69%;
+    flex-basis: 100%;
 }
 
 .play-video iframe {
@@ -132,4 +132,44 @@ margin-left: 8px;
 .comment-action span {
     margin-right: 20px;
     color : #5a5a5a
+}
+
+@media only screen and (max-width:768px){
+
+    .play-video {
+        width : 100vw }
+
+        .play-video h3 {
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .play-video-info p {
+            margin: 10px;
+        }
+
+        .icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .channelName {
+            font-size:10px;
+        }
+
+        .subscribebtn {
+            background-color: red;
+            color : #fff;
+            padding: 4px 15px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .video-descroption {
+            font-size: 10px;
+            margin-right: 10px;
+        }
+
 }

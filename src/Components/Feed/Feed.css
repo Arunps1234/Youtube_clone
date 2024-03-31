@@ -28,3 +28,13 @@ border-radius: 5px;
 .card p {
     font-size: 14px;
 }
+
+@media only screen and (max-width:768px){
+    .feed {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-right:  30px;
+
+}
+}

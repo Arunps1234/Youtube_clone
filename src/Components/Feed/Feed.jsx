@@ -15,8 +15,7 @@ import moment from 'moment'
 const Feed = ({ category }) => {
 
   const [data, setData] = useState([])
-  const API_KEY = "AIzaSyAdwtOctgrOisXXcBkDTdTNGCezy75kZo0"
-
+  const API_KEY = "AIzaSyAUGK0fIwx7jAVbrnNulP5lAeSdbt_XsQM"
 
   const fetchData = async () => {
     const API_Link = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20contentDetails%2C%20statistics&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=${category}&key=${API_KEY}`
@@ -65,7 +64,7 @@ else {
       <img src={value.snippet.thumbnails.high.url} alt="thubnail1" />
       <h2>{value.snippet.title}</h2>
       <h3>{value.snippet.channelTitle}</h3>
-      <p>{valueConverter(value.statistics.viewCount)} views &bull; {moment(value.snippet.publishedAt).fr}</p>
+      <p>{valueConverter(value.statistics.viewCount)} views &bull; {moment(value.snippet.publishedAt).fromNow()}</p>
     </Link>
       ))
 
